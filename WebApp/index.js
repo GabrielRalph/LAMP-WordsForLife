@@ -9,6 +9,14 @@ if (!window.SquidlyAPI) {
         loadUtterances: () => {},
         setGridSize: () => {},
     }
+
+    let styles = [GridIcon.styleSheet]
+    for (let url of styles) {
+        let link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = url;
+        document.head.appendChild(link);
+    }
 }
 
 SquidlyAPI.setGridSize(8, 6);
