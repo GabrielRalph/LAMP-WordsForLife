@@ -37,7 +37,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    needs: setup-pages
+    needs: compile
     runs-on: ubuntu-latest
     environment:
       name: github-pages
