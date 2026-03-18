@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "node ./BuildScripts/main.js",
+    "compile-for-deployment": "node ./BuildScripts/compile.js"
+  },  
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2"
+  }
+}

@@ -1,7 +1,4 @@
-import { SvgPlus } from "https://v3.squidly.com.au/src/SvgPlus/4.js";
-import { AccessEvent } from "https://v3.squidly.com.au/src/Utilities/Buttons/access-buttons.js";
-import { GridIcon, GridLayout } from "https://v3.squidly.com.au/src/Utilities/Buttons/grid-icon.js";
-import { relURL } from "https://v3.squidly.com.au/src/Utilities/usefull-funcs.js";
+import { SvgPlus, AccessEvent,  GridIcon, GridLayout, relURL } from "./utilities.js"
 
 
 if (!window.SquidlyAPI) {
@@ -51,7 +48,6 @@ function rgb2hsl(r, g, b) {
     Math.round(l * 100)
   ];
 };
-
 
 const ACTION_CODES = {
     // # {65, 4, 6, 7, 8, 39, 10, 40, 41, 42, 43, 73, 16, 74, 20, 28, 29, 30}
