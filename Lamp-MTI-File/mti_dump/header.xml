@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-16"?>
+<VersionInfo version="1.05_2014-07-07" xmlns="http://research.prentrom.com/xsd/Version" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="xmlns http://research.prentrom.com/xsd/Version_1.05_2014-07-07.xsd">
+        <Name>LAMP84-SEQ.51</Name>
+        <Type>MAP</Type>
+        <PartNumber>16597-2</PartNumber>
+        <VersionData>
+                <MajorVersion>1</MajorVersion>
+                <MinorVersion>18</MinorVersion>
+                <Date>2021-06-14</Date>
+                <PreRelease></PreRelease>
+        </VersionData>
+        <PrerequisiteData>
+                <Prerequisite>
+                        <Name>SCSH</Name>
+                        <Type>ICONS</Type>
+                        <PartNumber></PartNumber>
+                        <VersionData>
+                                <MajorVersion>1</MajorVersion>
+                                <MinorVersion>4</MinorVersion>
+                                <Date>2012-09-19</Date>
+                                <PreRelease></PreRelease>
+                        </VersionData>
+                </Prerequisite>
+                <Prerequisite>
+                        <Name>SCS</Name>
+                        <Type>ICONS</Type>
+                        <PartNumber></PartNumber>
+                        <VersionData>
+                                <MajorVersion>1</MajorVersion>
+                                <MinorVersion>3</MinorVersion>
+                                <Date>2012-05-17</Date>
+                                <PreRelease></PreRelease>
+                        </VersionData>
+                </Prerequisite>
+                <Prerequisite>
+                        <Name>en-US</Name>
+                        <Type>LANGUAGE_PACKAGE</Type>
+                        <PartNumber></PartNumber>
+                        <VersionData>
+                                <MajorVersion>1</MajorVersion>
+                                <MinorVersion>3</MinorVersion>
+                                <Date>2012-05-07</Date>
+                                <PreRelease></PreRelease>
+                        </VersionData>
+                </Prerequisite>
+        </PrerequisiteData>
+        <MapInfoData>
+                <MapName>LAMP WFL 84 Full</MapName>
+                <Modified>false</Modified>
+                <Categories>
+                        <Category>LAMP Words for Life Standard</Category>
+                </Categories>
+        </MapInfoData>
+        <MapSignedData>
+                <Identifier>51</Identifier>
+                <DemoMode>true</DemoMode>
+                <NoKeyCodeRequired>false</NoKeyCodeRequired>
+                <Signature>871390384D04F087C5AB558CDE3BF97ED4EC6AA0B24CEAD0F0DA98BD77EF4C38</Signature>
+        </MapSignedData>
+</VersionInfo>
