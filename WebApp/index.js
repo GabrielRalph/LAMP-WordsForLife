@@ -1,4 +1,4 @@
-import { SvgPlus, AccessEvent,  GridIcon, GridLayout, relURL } from "./utilities.js"
+import { SvgPlus, AccessEvent,  GridIcon, GridLayout, relURL } from "./Utilities/utilities.js"
 
 
 if (!window.SquidlyAPI) {
@@ -57,27 +57,27 @@ function rgb2hsl(r, g, b) {
   ];
 };
 
-const ACTION_CODES = {
-    // # {65, 4, 6, 7, 8, 39, 10, 40, 41, 42, 43, 73, 16, 74, 20, 28, 29, 30}
-    '65': 'add an s if possible',
-    '4': 'play audio file',
-    '6': 'Go back',
-    '7': 'Go back (ok)',
-    '8': 'Goto page stop go to home for 10',
-    '39': 'placeholder',
-    '10': 'Add word and go to home',
-    '40': 'Volume up',
-    '41': 'Volume down',
-    '42': 'adds phonics',
-    '43': 'Delete currently typed word',
-    '73': 'Goto to page',
-    '16': 'Backspace',
-    '74': 'Open Word finder',
-    '20': 'speaks everythin',
-    '28': 'Clear everything',
-    '29': 'speaks last word',
-    '30': '',
-}
+// const ACTION_CODES = {
+//     // # {65, 4, 6, 7, 8, 39, 10, 40, 41, 42, 43, 73, 16, 74, 20, 28, 29, 30}
+//     '65': 'add an s if possible',
+//     '4': 'play audio file',
+//     '6': 'Go back',
+//     '7': 'Go back (ok)',
+//     '8': 'Goto page stop go to home for 10',
+//     '39': 'placeholder',
+//     '10': 'Add word and go to home',
+//     '40': 'Volume up',
+//     '41': 'Volume down',
+//     '42': 'adds phonics',
+//     '43': 'Delete currently typed word',
+//     '73': 'Goto to page',
+//     '16': 'Backspace',
+//     '74': 'Open Word finder',
+//     '20': 'speaks everythin',
+//     '28': 'Clear everything',
+//     '29': 'speaks last word',
+//     '30': '',
+// }
 
 let LampPages = {};
 
@@ -89,7 +89,6 @@ export class LampAction extends AccessEvent {
         this.utterance = (lampButton.message || "").trim();
     }
 }
-
 
 class LampIcon extends GridIcon {
     constructor(opts) {
@@ -136,6 +135,7 @@ class LampIcon extends GridIcon {
 }
 
 class LampWindow extends SvgPlus {
+    #iconCache = {};
     constructor(el = "lamp-window") {
         super(el);
         this.mainLayout = this.createChild(GridLayout, {}, 8, 6);
@@ -193,6 +193,7 @@ class LampWindow extends SvgPlus {
 
     async load(){
         LampPages = await (await fetch(relURL("./zuns_lamp_pages.json", import.meta))).json();
+        this.page = 1;
         SquidlyAPI.firebaseOnValue("value1", value => {
             if (this.text.innerHTML !== value) {
                 this.text.innerHTML = value;
@@ -255,6 +256,17 @@ class LampWindow extends SvgPlus {
         SquidlyAPI.firebaseSet("value1", this.text.innerHTML);
     }
 
+    getLampButton(page, button) {
+        const buttonID = `${page}-${button.position.join("-")}`;
+        if (this.#iconCache[buttonID]) {
+            return this.#iconCache[buttonID];
+        } else {
+            const icon = new LampIcon(button);
+            this.#iconCache[buttonID] = icon;
+            return icon;
+        }
+    }
+
     set page(page) {
         if (this.page !== page && page in LampPages) {
             this._page = page;
@@ -271,7 +283,7 @@ class LampWindow extends SvgPlus {
             let utterances = [];
             for (let button of buttons) {
                 utterances.push((button.message || "").trim())
-                this.layout.add(new LampIcon(button), button.position[1], button.position[0]);
+                this.layout.add(this.getLampButton(page, button), button.position[1], button.position[0]);
             }
             utterances = utterances.filter(u => u);
             SquidlyAPI.loadUtterances(utterances)
