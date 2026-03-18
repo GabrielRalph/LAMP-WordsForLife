@@ -23,10 +23,6 @@ jobs:
       - name: Build the web app
         run: npm run compile-for-deployment
 
-  setup-pages:
-    needs: compile
-    runs-on: ubuntu-latest
-    steps:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
